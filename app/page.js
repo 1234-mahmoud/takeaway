@@ -1,5 +1,4 @@
 import Image from "next/image";
-import classes from '../style/tst.module.css'
 import Link from "next/link";
 export default function Home() {
   return (
