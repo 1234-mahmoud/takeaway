@@ -11,17 +11,20 @@ const michroma = Michroma({
 const AboutComp = () => {
   return (
     <div
-      className={`w-full max-w-[1320px] flex justify-center items-center gap-[40px]
-    py-[100px]
+      className={`w-full max-w-[1320px] h-full flex justify-center items-center gap-[40px]
+    py-[100px] mx-auto
+    max-md:flex-col max-md:p-0
     `}
     >
       <div className={`img relative overflow-hidden w-full max-w-[400px] h-[400px]`}>
         <Image src="/meal.jpg" alt="meal pic" fill className={`hover:scale-125 transition-all duration-500 ease-in-out`}/>
       </div>
       <div className={` w-full max-w-[400px] h-[400px] text-white
-        flex flex-col gap-[30px]
+        flex flex-col gap-[30px] max-md:p-[10px]
         `}>
-        <p className={`${michroma.className} text-2xl leading-[40px] tracking-widest`}>
+        <p className={`${michroma.className} text-3xl leading-[50px] lg:text-2xl lg:leading-[40px] tracking-widest
+        
+        `}>
           who are Takeaway?
         </p>
         <p className={`font-sans leading-[28px] tracking-wider`}>
