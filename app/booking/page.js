@@ -8,4 +8,4 @@ const Booking = () => {
 
 
 
-export default page;
+export default Booking;
