@@ -7,6 +7,10 @@
   --foreground: #171717;
 }
 
+@utility container {
+  @apply mx-auto px-4 sm:px-6 lg:px-8;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
