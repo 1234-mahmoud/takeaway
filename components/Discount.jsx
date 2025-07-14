@@ -20,6 +20,7 @@ export default function Discount() {
       <div className="container grid lg:grid-cols-2 gap-12">
         {cards.map((card) => (
           <div
+            key={card.title}
             className={`bg-gray-800 p-8 flex gap-6 items-center rounded-md group flex-wrap justify-center`}
           >
             <div className="w-42 rounded-full overflow-hidden border-amber-400 border-4">
