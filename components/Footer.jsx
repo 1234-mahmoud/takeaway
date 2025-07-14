@@ -52,7 +52,7 @@ const socialMedia = [
 
 export default function Footer() {
   return (
-    <footer className="py-24 bg-gray-800">
+    <footer className="py-24 bg-gray-800 text-white">
       <div className="container">
         <div className=" grid md:grid-cols-3 gap-y-8">
           <div className="text-center">
