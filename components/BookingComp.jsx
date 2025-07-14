@@ -31,15 +31,17 @@ const BookingComp = () => {
   return (
     <div className={` container mx-auto h-full w-full flex flex-col  gap-[20px] py-[100px] max-md:py-0
     `}>
-        <p className={`${lobster.className} text-3xl uppercase`}>book a meal</p>
-    <div className={`h-full w-full flex justify-center items-center gap-[50px] 
+    <div className={`h-full w-full flex justify-center items-center  gap-[50px] 
     max-md:flex-col max-md:py-0
     `}>
   {/* --------------------------------------- */}
         
 
-        <form action="" className={`w-full max-w-[600px] h-[400px] flex flex-col items-center gap-[20px]`}>
-          <fieldset className={`w-full h-[60px] border rounded-md p-[10px] hover:bg-gray-100 transition-all duration-300 ease-in-out `}>
+        <form action="" className={`w-full lg:w-[600px] flex flex-col  gap-[20px]`}>
+        <p className={`${lobster.className} text-3xl uppercase`}>book a meal</p>
+
+         <div className={`flex flex-col  gap-[20px] `}>
+           <fieldset className={`w-full h-[60px] border rounded-md p-[10px] hover:bg-gray-100 transition-all duration-300 ease-in-out `}>
             <legend>Your Name</legend>
             <input type="text" name="" id="" className={`w-full indent-4 focus:outline-0 `} />
           </fieldset>
@@ -59,14 +61,7 @@ const BookingComp = () => {
             <legend>Delivary Date and Time</legend>
             <input type="datetime-local" name="" id="" className={`w-full indent-4 focus:outline-0 `} />
           </fieldset>
-        </form>
-     
-      {/* ----------------------- */}
-      <div  className={`w-full max-w-[400px] h-[375px] relative overflow-hidden rounded-md`}>
-        <div ref={mapRef} className={`w-full h-full`} />
-      </div>
-
-    </div>
+         </div>
      <button
           className={`w-[150px] h-[40px] bg-yellow-500 text-white text-[16px]
             rounded-2xl hover:bg-amber-700 transition-all duration-500 ease-in-out
@@ -74,6 +69,14 @@ const BookingComp = () => {
         >
           Book Now
         </button>
+        </form>
+     
+      {/* ----------------------- */}
+      <div  className={`w-full md:w-[600px] lg:w-[400px] h-[380px] relative overflow-hidden rounded-md`}>
+        <div ref={mapRef} className={`w-full h-full`} />
+      </div>
+
+    </div>
     </div>
   );
 };

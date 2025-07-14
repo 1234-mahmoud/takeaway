@@ -11,7 +11,7 @@ const michroma = Michroma({
 const AboutComp = () => {
   return (
     <div
-      className={`w-full max-w-[1320px] h-full flex justify-center items-center gap-[40px]
+      className={`w-full max-w-[1320px] h-full  flex justify-center items-center gap-[40px]
     py-[100px] mx-auto
     max-md:flex-col max-md:p-0
     `}
