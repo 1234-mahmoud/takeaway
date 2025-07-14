@@ -35,3 +35,20 @@ body {
   font-weight: 400;
   font-style: normal;
 }
+
+
+/* styles/globals.css */
+.swiper-pagination-bullet {
+  width: 10px !important;
+  height: 10px !important;
+  background-color: rgb(255, 255, 255) !important;
+  opacity: 1;
+  transition: all 0.3s ease;
+  margin: 0 6px !important;
+  border-radius: 50%;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #edcf0b !important;
+  transform: scale(1.5);
+}
