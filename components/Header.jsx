@@ -1,18 +1,23 @@
+"use client";
+
 import Link from "next/link";
 import Button from "@/components/Button";
 import { IoMenu } from "react-icons/io5";
 import { FaShoppingCart } from "react-icons/fa";
 import { FaRegUser } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
+import { usePathname } from "next/navigation";
 
 const navLinks = [
   { text: "home", href: "/" },
-  { text: "menu", href: "menu" },
-  { text: "about", href: "about" },
-  { text: "book table", href: "booking" },
+  { text: "menu", href: "/menu" },
+  { text: "about", href: "/about" },
+  { text: "book table", href: "/booking" },
 ];
 
 export default function Header() {
+  const path = usePathname();
+
   return (
     <header>
       <div className={`container flex justify-between items-center h-14`}>
@@ -25,7 +30,12 @@ export default function Header() {
               <li key={link.text}>
                 <Link
                   href={link.href}
-                  className={`uppercase hover:text-amber-400 duration-300`}
+                  className={`uppercase hover:text-amber-400 duration-300
+                              ${
+                                path === link.href
+                                  ? "text-amber-400"
+                                  : undefined
+                              }`}
                 >
                   {link.text}
                 </Link>

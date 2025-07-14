@@ -17,14 +17,17 @@ const Slider = () => {
           {Array.from({ length: 4 }).map((_, i) => (
             <SwiperSlide key={i}>
               <div className="flex flex-col justify-start items-start p-4">
-                <h1 className="text-xl font-bold mb-2">this is the title of slide num {i + 1}</h1>
+                <h1 className="text-xl font-bold mb-2">
+                  this is the title of slide num {i + 1}
+                </h1>
                 <p className="text-sm text-left w-full max-w-[400px]">
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam
                   quia nesciunt magni explicabo deserunt molestias, sed sunt?
-                  Dolorum consequatur harum nesciunt sunt eius iste ab maxime vitae
-                  aspernatur eum. Perspiciatis laborum corporis id, pariatur tempora
-                  animi fugiat quisquam aliquam error voluptate suscipit quae at
-                  quam, non fuga dolorum cupiditate consequatur!
+                  Dolorum consequatur harum nesciunt sunt eius iste ab maxime
+                  vitae aspernatur eum. Perspiciatis laborum corporis id,
+                  pariatur tempora animi fugiat quisquam aliquam error voluptate
+                  suscipit quae at quam, non fuga dolorum cupiditate
+                  consequatur!
                 </p>
               </div>
             </SwiperSlide>
