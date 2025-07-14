@@ -19,7 +19,7 @@ export default function Header() {
   const path = usePathname();
 
   return (
-    <header>
+    <header className={`absolute top-0 left-0 z-10 w-full text-white`}>
       <div className={`container flex justify-between items-center h-14`}>
         <Link href={""} className="text-xl font-bold">
           Takeaway

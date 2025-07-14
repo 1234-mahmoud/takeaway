@@ -16,7 +16,7 @@ const cards = [
 
 export default function Discount() {
   return (
-    <section className="py-24 bg-white text-white">
+    <section className="py-24 bg-white text-white ">
       <div className="container grid lg:grid-cols-2 gap-12">
         {cards.map((card) => (
           <div
