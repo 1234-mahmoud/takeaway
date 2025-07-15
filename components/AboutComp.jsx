@@ -17,7 +17,7 @@ const AboutComp = () => {
     `}
     >
       <div className={`img relative overflow-hidden w-full max-w-[400px] h-[400px]`}>
-        <Image src="/meal.jpg" alt="meal pic" fill className={`hover:scale-125 transition-all duration-500 ease-in-out`}/>
+        <Image src="/meal.jpg" alt="meal pic" fill className={`hover:scale-125 hover:rotate-12 transition-all duration-500 ease-in-out`}/>
       </div>
       <div className={` w-full max-w-[400px] h-[400px] text-white
         flex flex-col gap-[30px] max-md:p-[10px]
