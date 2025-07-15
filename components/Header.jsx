@@ -18,38 +18,26 @@ const navLinks = [
 
 export default function Header() {
   const path = usePathname();
-
-  const [show,setShow] = useState(false);
-  const toggle = ()=>{
-    setShow(!show)
-  }
+  const [show, setShow] = useState(false);
+  const toggle = () => setShow(!show);
 
   return (
-    <header className={`absolute top-0 left-0 z-10 w-full text-white`}>
-      <div className={`container flex justify-between items-center h-14`}>
-        <Link href={""} className="text-xl font-bold">
+    <header className="absolute top-0 left-0 z-10 w-full text-white">
+      <div className="container flex justify-between items-center h-14">
+        <Link href="/" className="text-xl font-bold">
           Takeaway
         </Link>
-        <nav className={`relative`}>
-          <ul className={`flex gap-5
-          transition-all duration-500 ease-in-out
-              max-sm:flex-col max-sm:bg-gray-800 max-sm:h-lvh max-sm:w-[150px]
-              max-sm:fixed max-sm:top-0 max-sm:right-0 max-sm:pt-[50px] px-[10px]
-           z-10
-              ${show?`
-              max-sm:translate-x-0
-              `:'translate-x-[150px]'}
-            `}>
+
+        {/* Desktop Nav */}
+        <nav className="hidden sm:flex gap-5">
+          <ul className="flex gap-5">
             {navLinks.map((link) => (
               <li key={link.text}>
                 <Link
                   href={link.href}
-                  className={`uppercase hover:text-amber-400 duration-300
-                              ${
-                                path === link.href
-                                  ? "text-amber-400"
-                                  : undefined
-                              }`}
+                  className={`uppercase hover:text-amber-400 duration-300 ${
+                    path === link.href ? "text-amber-400" : ""
+                  }`}
                 >
                   {link.text}
                 </Link>
@@ -57,6 +45,8 @@ export default function Header() {
             ))}
           </ul>
         </nav>
+
+        {/* Right Icons - Desktop Only */}
         <div className="hidden lg:flex items-center gap-3">
           <div className="flex gap-3 *:hover:text-amber-400">
             <FaRegUser size={18} />
@@ -65,14 +55,40 @@ export default function Header() {
           </div>
           <Button>Order Online</Button>
         </div>
-        <button className=" lg:hidden hover:text-amber-400 z-10" onClick={toggle}>
+
+        {/* Mobile Menu Button */}
+        <button className="sm:hidden hover:text-amber-400 z-20" onClick={toggle}>
           <IoMenu size={30} />
         </button>
-
       </div>
-        {show &&(
+
+      {/* Mobile Nav */}
+      <nav
+        className={`sm:hidden fixed top-0 right-0 h-full w-[150px] bg-gray-800 z-10 transition-transform duration-500 ease-in-out px-4 pt-[50px] ${
+          show ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <ul className="flex flex-col gap-5">
+          {navLinks.map((link) => (
+            <li key={link.text}>
+              <Link
+                href={link.href}
+                className={`uppercase hover:text-amber-400 duration-300 ${
+                  path === link.href ? "text-amber-400" : ""
+                }`}
+                onClick={() => setShow(false)}
+              >
+                {link.text}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      {/* Overlay */}
+      {show && (
         <div
-          className="fixed inset-0 "
+          className="fixed inset-0 z-[5] bg-black/30 backdrop-blur-sm"
           onClick={() => setShow(false)}
         />
       )}
