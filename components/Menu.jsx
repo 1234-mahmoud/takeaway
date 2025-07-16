@@ -91,7 +91,7 @@ export default function Menu() {
   const [activeCategory, setActiveCategory] = useState("all");
 
   const filteredMeals = menu.filter(
-    (skill) => activeCategory === "all" || skill.category === activeCategory
+    (cat) => activeCategory === "all" || cat.category === activeCategory
   );
   return (
     <section id="skills" className="py-24 px-4 relative bg-white text-black">
