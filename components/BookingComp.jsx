@@ -29,7 +29,7 @@ const BookingComp = () => {
 
   return (
     <div
-      className={` container mx-auto h-full w-full flex flex-col  gap-[20px] py-[100px] max-md:py-0
+      className={` container my-[50px] mx-auto h-full w-full flex flex-col  gap-[20px] py-[100px] max-md:py-0
     `}
     >
       <div
