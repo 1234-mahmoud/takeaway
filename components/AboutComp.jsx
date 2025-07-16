@@ -1,11 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import {Michroma } from 'next/font/google';
+import { Michroma } from "next/font/google";
 
 const michroma = Michroma({
-  weight: '400',
-  subsets: ['latin'],
-  display: 'swap',
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
 });
 
 const AboutComp = () => {
@@ -16,15 +16,26 @@ const AboutComp = () => {
     max-md:flex-col max-md:p-0
     `}
     >
-      <div className={`img relative overflow-hidden w-full max-w-[400px] h-[400px]`}>
-        <Image src="/meal.jpg" alt="meal pic" fill className={`hover:scale-125 hover:rotate-12 transition-all duration-500 ease-in-out`}/>
+      <div
+        className={`img relative overflow-hidden w-full max-w-[400px] h-[400px]`}
+      >
+        <Image
+          src="/meal.jpg"
+          alt="meal pic"
+          fill
+          className={`hover:scale-125 hover:rotate-12 transition-all duration-500 ease-in-out`}
+        />
       </div>
-      <div className={` w-full max-w-[400px] h-[400px] text-white
+      <div
+        className={` w-full max-w-[400px] h-[400px] text-white
         flex flex-col gap-[30px] max-md:p-[10px]
-        `}>
-        <p className={`${michroma.className} text-3xl leading-[50px] lg:text-2xl lg:leading-[40px] tracking-widest
+        `}
+      >
+        <p
+          className={`${michroma.className} text-3xl leading-[50px] lg:text-2xl lg:leading-[40px] tracking-widest
         
-        `}>
+        `}
+        >
           who are Takeaway?
         </p>
         <p className={`font-sans leading-[28px] tracking-wider`}>

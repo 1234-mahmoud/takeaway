@@ -1,6 +1,7 @@
 import AboutComp from "@/components/AboutComp";
 import Discount from "@/components/Discount";
 import Slider from "@/components/Slider";
+import Menu from "@/components/Menu";
 import Image from "next/image";
 import Link from "next/link";
 import Booking from "./booking/page";
@@ -9,11 +10,12 @@ export default function Home() {
   return (
     <div>
       <Slider />
-      <div className="w-full mt-[100px] bg-gray-800">
+      <Menu />
+      <div className="w-full bg-gray-800">
         <AboutComp />
       </div>
       <div className="w-full">
-        <BookingComp/>
+        <BookingComp />
       </div>
       <Discount />
     </div>
