@@ -22,7 +22,7 @@ export default function Header() {
   const toggle = () => setShow(!show);
 
   return (
-    <header className="absolute top-0 left-0 z-10 w-full text-white">
+    <header className="absolute h-[60px] top-0 left-0 z-10 w-full bg-gradient-to-r from-black via-[#000000ce] to-[#5c5d5d] text-white">
       <div className="container flex justify-between items-center h-14">
         <Link href="/" className={`text-5xl font-bold
           bg-[url('/meal2.jpg')] bg-clip-text text-transparent

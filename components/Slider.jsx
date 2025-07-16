@@ -16,6 +16,7 @@ const Slider = () => {
   return (
     <div
       className={`w-full h-lvh bg-gradient-to-r from-black via-[#000000ce] to-[#5c5d5d] text-white relative
+      mt-[60px]
     `}
     >
       <div
