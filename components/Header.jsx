@@ -24,7 +24,9 @@ export default function Header() {
   return (
     <header className="absolute top-0 left-0 z-10 w-full text-white">
       <div className="container flex justify-between items-center h-14">
-        <Link href="/" className="text-xl font-bold">
+        <Link href="/" className={`text-5xl font-bold
+          bg-[url('/meal2.jpg')] bg-clip-text text-transparent
+          `}>
           Takeaway
         </Link>
 
