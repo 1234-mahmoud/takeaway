@@ -15,9 +15,8 @@ const lobster = Lobster({
 const Slider = () => {
   return (
     <div
-      className={`w-full h-lvh bg-gradient-to-r from-black via-[#000000ce] to-[#5c5d5d] text-white relative
-      mt-[60px]
-    `}
+      className={`w-full h-lvh bg-gradient-to-r from-[var(--primary-dark)] via-[var(--primary)] to-[var(--primary-light)] text-white relative shadow-2xl
+        `}
     >
       <div
         className={` absolute bottom-0 right-0 
@@ -44,12 +43,12 @@ const Slider = () => {
           {Array.from({ length: 4 }).map((_, i) => (
             <SwiperSlide key={i}>
               <div className="flex flex-col justify-start items-start p-4">
-                <h1 className={`text-xl md:text-2xl lg:text-4xl font-bold mb-2
+                <h1 className={`text-xl md:text-2xl lg:text-4xl font-bold mb-2 text-[var(--secondary)]
                   ${lobster.className}
                   `}>
                   This Is Fast Food
                 </h1>
-                <p className="text-md text-left w-full max-w-[400px]">
+                <p className="text-md text-left w-full max-w-[400px] text-[var(--neutral-200)]">
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam
                   quia nesciunt magni explicabo deserunt molestias, sed sunt?
                   Dolorum consequatur harum nesciunt sunt eius iste ab maxime

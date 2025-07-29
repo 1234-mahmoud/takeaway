@@ -5,8 +5,50 @@
 @import "tailwindcss";
 
 :root {
+  /* Professional Color Palette */
+  --primary: #1a365d;      /* Deep Navy Blue */
+  --primary-light: #2d5a8b; /* Lighter Navy */
+  --primary-dark: #0f2444;  /* Darker Navy */
+  --secondary: #d69e2e;     /* Rich Gold */
+  --secondary-light: #f6ad55; /* Light Gold */
+  --secondary-dark: #b7791f;  /* Dark Gold */
+  --accent: #38a169;        /* Professional Green */
+  --accent-light: #48bb78;   /* Light Green */
+  --accent-dark: #2f855a;    /* Dark Green */
+  
+  /* Neutral Colors */
+  --neutral-50: #f7fafc;    /* Very Light Gray */
+  --neutral-100: #edf2f7;   /* Light Gray */
+  --neutral-200: #e2e8f0;   /* Medium Light Gray */
+  --neutral-300: #cbd5e0;   /* Medium Gray */
+  --neutral-400: #a0aec0;   /* Medium Dark Gray */
+  --neutral-500: #718096;   /* Gray */
+  --neutral-600: #4a5568;   /* Dark Gray */
+  --neutral-700: #2d3748;   /* Very Dark Gray */
+  --neutral-800: #1a202c;   /* Almost Black */
+  --neutral-900: #171923;   /* Black */
+  
+  /* Semantic Colors */
+  --success: #38a169;       /* Green */
+  --warning: #d69e2e;       /* Gold */
+  --error: #e53e3e;         /* Red */
+  --info: #3182ce;          /* Blue */
+  
+  /* Background Colors */
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #1a202c;
+  --surface: #f7fafc;
+  --surface-dark: #1a202c;
+  
+  /* Text Colors */
+  --text-primary: #1a202c;
+  --text-secondary: #4a5568;
+  --text-muted: #718096;
+  --text-inverse: #ffffff;
+}
+
+html {
+  height: 100%;
 }
 
 @utility container {
@@ -17,12 +59,20 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --surface: #1a202c;
+    --surface-dark: #0a0a0a;
+    --text-primary: #f7fafc;
+    --text-secondary: #e2e8f0;
+    --text-muted: #a0aec0;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .michroma-regular {
@@ -37,11 +87,73 @@ body {
   font-style: normal;
 }
 
+/* Professional Button Styles */
+.btn-primary {
+  background: var(--primary);
+  color: var(--text-inverse);
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: var(--primary-light);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(26, 54, 93, 0.3);
+}
+
+.btn-secondary {
+  background: var(--secondary);
+  color: var(--text-inverse);
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--secondary-light);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(214, 158, 46, 0.3);
+}
+
+.btn-accent {
+  background: var(--accent);
+  color: var(--text-inverse);
+  transition: all 0.3s ease;
+}
+
+.btn-accent:hover {
+  background: var(--accent-light);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(56, 161, 105, 0.3);
+}
+
+/* Professional Card Styles */
+.card-primary {
+  background: var(--surface);
+  border: 1px solid var(--neutral-200);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.card-primary:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.card-dark {
+  background: var(--surface-dark);
+  color: var(--text-inverse);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.card-dark:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
 /* styles/globals.css */
 .swiper-pagination-bullet {
   width: 10px !important;
   height: 10px !important;
-  background-color: rgb(255, 255, 255) !important;
+  background-color: var(--neutral-300) !important;
   opacity: 1;
   transition: all 0.3s ease;
   margin: 0 6px !important;
@@ -49,6 +161,6 @@ body {
 }
 
 .swiper-pagination-bullet-active {
-  background-color: #edcf0b !important;
+  background-color: var(--secondary) !important;
   transform: scale(1.5);
 }

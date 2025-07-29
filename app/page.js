@@ -8,7 +8,7 @@ import Booking from "./booking/page";
 import BookingComp from "@/components/BookingComp";
 export default function Home() {
   return (
-    <div>
+    <div className="">
       <Slider />
       <Menu />
       <div className="w-full bg-gray-800">

@@ -3,6 +3,9 @@ import "./globals.css";
 import { Creepster } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { CartProvider } from "@/contexts/CartContext";
+import { SearchProvider } from "@/contexts/SearchContext";
+import SearchModal from "@/components/SearchModal";
 
 const creepster = Creepster({
   weight: "400",
@@ -25,10 +28,17 @@ export default function RootLayout({ children }) {
       className={`${creepster.variable}
     `}
     >
-      <body>
-        <Header />
-        {children}
-        <Footer />
+      <body className="min-h-screen flex flex-col">
+        <CartProvider>
+          <SearchProvider>
+            <Header />
+            <main className="flex-1 pt-[60px]">
+              {children}
+            </main>
+            <Footer />
+            <SearchModal />
+          </SearchProvider>
+        </CartProvider>
       </body>
     </html>
   );

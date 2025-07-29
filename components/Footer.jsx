@@ -52,7 +52,7 @@ const socialMedia = [
 
 export default function Footer() {
   return (
-    <footer className="py-24 bg-gray-800 text-white">
+    <footer className="py-24 bg-[var(--surface-dark)] text-white w-full mt-auto shadow-xl">
       <div className="container">
         <div className=" grid md:grid-cols-3 gap-y-8">
           <div className="text-center">
@@ -62,7 +62,7 @@ export default function Footer() {
                 <li key={link.text}>
                   <a
                     href={link.href}
-                    className="flex items-center gap-3 hover:text-amber-400 duration-100 justify-center mb-2"
+                    className="flex items-center gap-3 hover:text-[var(--secondary)] duration-300 justify-center mb-2 transition-all"
                   >
                     <span>{link.icon}</span>
                     {link.text}
@@ -83,7 +83,7 @@ export default function Footer() {
                 <li key={index}>
                   <a
                     href={link.href}
-                    className="bg-white p-2 inline-block text-gray-800 text-xl rounded-full hover:text-amber-400"
+                    className="bg-white p-2 inline-block text-[var(--primary)] text-xl rounded-full hover:text-[var(--secondary)] transition-all duration-300 shadow-md hover:shadow-lg"
                   >
                     {link.icon}
                   </a>

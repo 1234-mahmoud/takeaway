@@ -3,82 +3,9 @@
 import { useState } from "react";
 import Button from "./Button";
 import { FaCartPlus } from "react-icons/fa";
+import menu from "@/data/data";
+import { useCart } from "@/contexts/CartContext";
 
-// Menu data
-const menu = [
-  {
-    image: "f2.png",
-    title: "Delicious Burger",
-    description:
-      "Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque",
-    price: 15,
-    category: "burger",
-  },
-  {
-    image: "f7.png",
-    title: "Tasty Burger",
-    description:
-      "Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque",
-    price: 12,
-    category: "burger",
-  },
-  {
-    image: "f8.png",
-    title: "Tasty Burger",
-    description:
-      "Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque",
-    price: 14,
-    category: "burger",
-  },
-  {
-    image: "f1.png",
-    title: "Delicious Pizza",
-    description:
-      "Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque",
-    price: 20,
-    category: "pizza",
-  },
-  {
-    image: "f3.png",
-    title: "Delicious Pizza",
-    description:
-      "Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque",
-    price: 17,
-    category: "pizza",
-  },
-  {
-    image: "f6.png",
-    title: "Delicious Pizza",
-    description:
-      "Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque",
-    price: 15,
-    category: "pizza",
-  },
-  {
-    image: "f4.png",
-    title: "Delicious Pasta",
-    description:
-      "Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque",
-    price: 18,
-    category: "pasta",
-  },
-  {
-    image: "f9.png",
-    title: "Delicious Pasta",
-    description:
-      "Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque",
-    price: 10,
-    category: "pasta",
-  },
-  {
-    image: "f5.png",
-    title: "French Fries",
-    description:
-      "Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque",
-    price: 15,
-    category: "fries",
-  },
-];
 
 const categories = ["all", "burger", "pizza", "pasta", "fries"];
 
@@ -90,11 +17,11 @@ function CategoryFilter({ activeCategory, onChange }) {
         <button
           key={category}
           onClick={() => onChange(category)}
-          className={`px-5 py-2 rounded-full capitalize font-bold transition-colors duration-300
+          className={`px-5 py-2 rounded-full capitalize font-bold transition-all duration-300 shadow-md
             ${
               activeCategory === category
-                ? "bg-gray-800 text-white"
-                : "hover:bg-gray-800 hover:text-white"
+                ? "bg-[var(--primary)] text-white shadow-lg"
+                : "hover:bg-[var(--primary)] hover:text-white hover:shadow-lg"
             }`}
         >
           {category}
@@ -106,9 +33,15 @@ function CategoryFilter({ activeCategory, onChange }) {
 
 // Reusable card for each menu item
 function MenuCard({ item }) {
+  const { addToCart } = useCart();
+
+  const handleAddToCart = () => {
+    addToCart(item);
+  };
+
   return (
-    <div className="bg-gray-800 text-white rounded-2xl overflow-hidden group">
-      <div className="bg-gray-300 p-10 flex justify-center items-center h-[220px] rounded-bl-4xl">
+    <div className="bg-[var(--surface-dark)] text-white rounded-2xl overflow-hidden group shadow-lg hover:shadow-xl transition-all duration-300">
+      <div className="bg-[var(--neutral-200)] p-10 flex justify-center items-center h-[220px] rounded-bl-4xl">
         <img
           src={item.image}
           alt={item.title}
@@ -117,10 +50,10 @@ function MenuCard({ item }) {
       </div>
       <div className="p-6">
         <p className="font-bold text-xl mb-2">{item.title}</p>
-        <p>{item.description}</p>
+        <p className="text-[var(--neutral-300)]">{item.description}</p>
         <div className="flex items-center justify-between mt-3">
           <p>${item.price}</p>
-          <Button className="py-3">
+          <Button variant="secondary" className="py-3" onClick={handleAddToCart}>
             <FaCartPlus size={18} />
           </Button>
         </div>
@@ -157,7 +90,7 @@ export default function Menu() {
         </div>
 
         <div className="text-center mt-10">
-          <Button className="font-bold text-white px-8 py-2">View More</Button>
+          <Button variant="primary" className="font-bold px-8 py-2">View More</Button>
         </div>
       </div>
     </section>
