@@ -5,12 +5,16 @@ import Button from "./Button";
 import { FaCartPlus } from "react-icons/fa";
 import menu from "@/data/data";
 import { useCart } from "@/contexts/CartContext";
+import { useLanguage } from "@/contexts/LanguageContext";
+import translations from "@/data/translations";
 
 
 const categories = ["all", "burger", "pizza", "pasta", "fries"];
 
 // Reusable category filter
 function CategoryFilter({ activeCategory, onChange }) {
+  const { lang } = useLanguage();
+  const t = translations[lang];
   return (
     <div className="flex flex-wrap justify-center gap-4 mb-12">
       {categories.map((category) => (
@@ -24,7 +28,7 @@ function CategoryFilter({ activeCategory, onChange }) {
                 : "hover:bg-[var(--primary)] hover:text-white hover:shadow-lg"
             }`}
         >
-          {category}
+          {t.menu.categories[category]}
         </button>
       ))}
     </div>
@@ -64,6 +68,8 @@ function MenuCard({ item }) {
 
 // Main Menu component
 export default function Menu() {
+  const { lang } = useLanguage();
+  const t = translations[lang];
   const [activeCategory, setActiveCategory] = useState("all");
 
   const filteredItems =
@@ -75,7 +81,7 @@ export default function Menu() {
     <section id="menu" className="py-24 px-4 bg-white text-black">
       <div className="container mx-auto max-w-5xl">
         <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-          Our Menu
+          {t.menu.title}
         </h2>
 
         <CategoryFilter
@@ -90,7 +96,7 @@ export default function Menu() {
         </div>
 
         <div className="text-center mt-10">
-          <Button variant="primary" className="font-bold px-8 py-2">View More</Button>
+          <Button variant="primary" className="font-bold px-8 py-2">{t.menu.viewMore}</Button>
         </div>
       </div>
     </section>

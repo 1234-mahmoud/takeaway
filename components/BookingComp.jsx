@@ -3,6 +3,10 @@ import { useEffect, useRef } from "react";
 import { Loader } from "@googlemaps/js-api-loader";
 import { Lobster } from "next/font/google";
 import Button from "./Button";
+import { useCart } from "@/contexts/CartContext";
+import { useState } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import translations from "@/data/translations";
 
 const lobster = Lobster({
   weight: "400",
@@ -12,6 +16,9 @@ const lobster = Lobster({
 
 const BookingComp = () => {
   const mapRef = useRef(null);
+  const { lang } = useLanguage();
+  const t = translations[lang];
+  // Remove cart and orderPlaced state
 
   useEffect(() => {
     const loader = new Loader({
@@ -27,6 +34,8 @@ const BookingComp = () => {
     });
   }, []);
 
+  // Remove orderPlaced conditional rendering
+
   return (
     <div
       className={`container my-[100px] mx-auto h-full w-full flex flex-col gap-[20px] py-[100px] max-md:py-0 bg-[var(--surface)] rounded-2xl shadow-xl p-8
@@ -37,63 +46,65 @@ const BookingComp = () => {
     max-md:flex-col max-md:py-0
     `}
       >
+        {/* Remove cart summary for checkout */}
         {/* --------------------------------------- */}
 
         <form
           action=""
           className={`w-full lg:w-[600px] flex flex-col gap-[20px]`}
+          // Remove onSubmit handler for order placement
         >
           <p className={`${lobster.className} text-3xl uppercase text-[var(--primary)] mb-4`}>
-            book a meal
+            {t.booking.title}
           </p>
 
           <div className={`flex flex-col  gap-[20px] `}>
             <fieldset
               className={`w-full h-[60px] border border-[var(--neutral-300)] rounded-lg p-[10px] hover:bg-[var(--neutral-50)] transition-all duration-300 ease-in-out focus-within:border-[var(--primary)] focus-within:shadow-md`}
             >
-              <legend className="text-[var(--text-secondary)] px-2">Your Name</legend>
+              <legend className="text-[var(--text-secondary)] px-2">{t.booking.name}</legend>
               <input
                 type="text"
                 name=""
                 id=""
                 className={`w-full indent-4 focus:outline-0 bg-transparent text-[var(--text-primary)] placeholder-[var(--text-muted)]`}
-                placeholder="Enter your full name"
+                placeholder={t.booking.namePlaceholder}
               />
             </fieldset>
             <fieldset
               className={`w-full h-[60px] border border-[var(--neutral-300)] rounded-lg p-[10px] hover:bg-[var(--neutral-50)] transition-all duration-300 ease-in-out focus-within:border-[var(--primary)] focus-within:shadow-md`}
             >
-              <legend className="text-[var(--text-secondary)] px-2">Phone Number</legend>
+              <legend className="text-[var(--text-secondary)] px-2">{t.booking.phone}</legend>
               <input
                 type="tel"
                 name=""
                 id=""
                 className={`w-full indent-4 focus:outline-0 bg-transparent text-[var(--text-primary)] placeholder-[var(--text-muted)]`}
-                placeholder="Enter your phone number"
+                placeholder={t.booking.phonePlaceholder}
               />
             </fieldset>
             <fieldset
               className={`w-full h-[60px] border border-[var(--neutral-300)] rounded-lg p-[10px] hover:bg-[var(--neutral-50)] transition-all duration-300 ease-in-out focus-within:border-[var(--primary)] focus-within:shadow-md`}
             >
-              <legend className="text-[var(--text-secondary)] px-2">Your Email</legend>
+              <legend className="text-[var(--text-secondary)] px-2">{t.booking.email}</legend>
               <input
                 type="email"
                 name=""
                 id=""
                 className={`w-full indent-4 focus:outline-0 bg-transparent text-[var(--text-primary)] placeholder-[var(--text-muted)]`}
-                placeholder="Enter your email address"
+                placeholder={t.booking.emailPlaceholder}
               />
             </fieldset>
             <fieldset
               className={`w-full h-[60px] border border-[var(--neutral-300)] rounded-lg p-[10px] hover:bg-[var(--neutral-50)] transition-all duration-300 ease-in-out focus-within:border-[var(--primary)] focus-within:shadow-md`}
             >
-              <legend className="text-[var(--text-secondary)] px-2">How Many Persons</legend>
+              <legend className="text-[var(--text-secondary)] px-2">{t.booking.guests}</legend>
               <input
                 type="number"
                 name=""
                 id=""
                 className={`w-full indent-4 focus:outline-0 bg-transparent text-[var(--text-primary)] placeholder-[var(--text-muted)]`}
-                placeholder="Number of guests"
+                placeholder={t.booking.guestsPlaceholder}
                 min="1"
                 max="20"
               />
@@ -101,18 +112,18 @@ const BookingComp = () => {
             <fieldset
               className={`w-full h-[60px] border border-[var(--neutral-300)] rounded-lg p-[10px] hover:bg-[var(--neutral-50)] transition-all duration-300 ease-in-out focus-within:border-[var(--primary)] focus-within:shadow-md`}
             >
-              <legend className="text-[var(--text-secondary)] px-2">Delivery Date and Time</legend>
+              <legend className="text-[var(--text-secondary)] px-2">{t.booking.datetime}</legend>
               <input
                 type="datetime-local"
                 name=""
                 id=""
                 className={`w-full indent-4 focus:outline-0 bg-transparent text-[var(--text-primary)] placeholder-[var(--text-muted)]`}
-                placeholder="Select date and time"
+                placeholder={t.booking.datetimePlaceholder}
               />
             </fieldset>
           </div>
           <Button variant="primary" className="w-[150px] h-[40px] text-[16px] font-bold">
-            Book Now
+            {t.booking.bookNow}
           </Button>
         </form>
 

@@ -1,3 +1,4 @@
+"use client";
 import {
   FaLocationArrow,
   FaMailBulk,
@@ -8,6 +9,8 @@ import {
   FaInstagram,
   FaPinterest,
 } from "react-icons/fa";
+import { useLanguage } from "@/contexts/LanguageContext";
+import translations from "@/data/translations";
 
 const contact = [
   {
@@ -51,12 +54,55 @@ const socialMedia = [
 ];
 
 export default function Footer() {
+  const { lang } = useLanguage();
+  const t = translations[lang];
+  const contact = [
+    {
+      text: t.footer.location,
+      icon: <FaLocationArrow />,
+      href: "",
+    },
+    {
+      text: t.footer.call,
+      icon: <FaPhone />,
+      href: "tel:+123456789",
+    },
+    {
+      text: t.footer.email,
+      icon: <FaMailBulk />,
+      href: "mailto:demo@gmail.com",
+    },
+  ];
+
+  const socialMedia = [
+    {
+      icon: <FaFacebook />,
+      href: "",
+    },
+    {
+      icon: <FaTwitter />,
+      href: "",
+    },
+    {
+      icon: <FaLinkedin />,
+      href: "",
+    },
+    {
+      icon: <FaInstagram />,
+      href: "",
+    },
+    {
+      icon: <FaPinterest />,
+      href: "",
+    },
+  ];
+
   return (
     <footer className="py-24 bg-[var(--surface-dark)] text-white w-full mt-auto shadow-xl">
       <div className="container">
         <div className=" grid md:grid-cols-3 gap-y-8">
           <div className="text-center">
-            <h3 className="font-bold text-xl mb-3">Contact Us</h3>
+            <h3 className="font-bold text-xl mb-3">{t.footer.contactUs}</h3>
             <ul>
               {contact.map((link) => (
                 <li key={link.text}>
@@ -73,10 +119,9 @@ export default function Footer() {
           </div>
 
           <div className="text-center">
-            <h3 className="font-bold text-xl mb-3">Takeaway</h3>
+            <h3 className="font-bold text-xl mb-3">{t.footer.about}</h3>
             <p className="max-w-[400px] mx-auto">
-              Necessary, making this the first true generator on the Internet.
-              It uses a dictionary of over 200 Latin words, combined with
+              {t.footer.aboutText}
             </p>
             <ul className="mt-5 flex justify-center items-center gap-2">
               {socialMedia.map((link, index) => (
@@ -93,16 +138,16 @@ export default function Footer() {
           </div>
 
           <div className="text-center">
-            <h3 className="font-bold text-xl mb-3">Opening Hours</h3>
-            <p className="mb-6">Everyday</p>
-            <p>10.00 Am -10.00 Pm</p>
+            <h3 className="font-bold text-xl mb-3">{t.footer.openingHours}</h3>
+            <p className="mb-6">{t.footer.everyday}</p>
+            <p>{t.footer.hours}</p>
           </div>
         </div>
         <div className="text-center mt-10">
           <p className="mb-6">
-            © 2025 All Rights Reserved By Free Html Templates
+            {t.footer.copyright}
           </p>
-          <p>© Distributed By ThemeWagon</p>
+          <p>{t.footer.distributed}</p>
         </div>
       </div>
     </footer>

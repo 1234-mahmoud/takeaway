@@ -10,13 +10,15 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { useCart } from "@/contexts/CartContext";
 import { useSearch } from "@/contexts/SearchContext";
+import { useLanguage } from "@/contexts/LanguageContext";
+import translations from "@/data/translations";
 
 const navLinks = [
-  { text: "home", href: "/" },
-  { text: "menu", href: "/menu" },
-  { text: "about", href: "/about" },
-  { text: "book table", href: "/booking" },
-  { text: "cart", href: "/cart" },
+  { key: "home", href: "/" },
+  { key: "menu", href: "/menu" },
+  { key: "about", href: "/about" },
+  { key: "bookTable", href: "/booking" },
+  { key: "cart", href: "/cart" },
 ];
 
 export default function Header() {
@@ -25,6 +27,8 @@ export default function Header() {
   const toggle = () => setShow(!show);
   const { getTotalItems } = useCart();
   const { openSearch } = useSearch();
+  const { lang, toggleLang, setLanguage } = useLanguage();
+  const t = translations[lang];
 
   return (
     <header className="absolute h-[60px] top-0 left-0 z-10 w-full bg-gradient-to-r from-[var(--primary-dark)] via-[var(--primary)] to-[var(--primary-light)] text-white shadow-lg">
@@ -32,21 +36,21 @@ export default function Header() {
         <Link href="/" className={`text-5xl font-bold
           bg-[url('/meal2.jpg')] bg-clip-text text-transparent
           `}>
-          Takeaway
+          {t.brand}
         </Link>
 
         {/* Desktop Nav */}
         <nav className="hidden sm:flex gap-5">
           <ul className="flex gap-5">
             {navLinks.map((link) => (
-              <li key={link.text}>
+              <li key={link.key}>
                 <Link
                   href={link.href}
                   className={`uppercase hover:text-[var(--secondary)] duration-300 ${
                     path === link.href ? "text-[var(--secondary)]" : ""
                   }`}
                 >
-                  {link.text}
+                  {t.nav[link.key]}
                 </Link>
               </li>
             ))}
@@ -69,7 +73,17 @@ export default function Header() {
               <IoSearch size={20} />
             </button>
           </div>
-          <Button>Order Online</Button>
+          <Button>{t.orderOnline}</Button>
+          {/* Language Selector */}
+          <select
+            value={lang}
+            onChange={e => setLanguage(e.target.value)}
+            className="ml-4 px-2 py-1 rounded bg-[var(--primary-light)] text-black font-bold border border-[var(--secondary)] focus:outline-none"
+            style={{ direction: 'ltr' }}
+          >
+            <option value="en">EN</option>
+            <option value="ar">عربي</option>
+          </select>
         </div>
 
         {/* Mobile Menu Button */}
@@ -85,6 +99,16 @@ export default function Header() {
           <button onClick={openSearch} className="hover:text-[var(--secondary)] transition-colors">
             <IoSearch size={20} />
           </button>
+          {/* Language Selector Mobile */}
+          <select
+            value={lang}
+            onChange={e => setLanguage(e.target.value)}
+            className="px-2 py-1 rounded bg-[var(--primary-light)] text-black font-bold border border-[var(--secondary)] focus:outline-none"
+            style={{ direction: 'ltr' }}
+          >
+            <option value="en">EN</option>
+            <option value="ar">عربي</option>
+          </select>
           <button className="hover:text-[var(--secondary)] z-20" onClick={toggle}>
             <IoMenu size={30} />
           </button>
@@ -99,7 +123,7 @@ export default function Header() {
       >
         <ul className="flex flex-col gap-5">
           {navLinks.map((link) => (
-            <li key={link.text}>
+            <li key={link.key}>
               <Link
                 href={link.href}
                 className={`uppercase hover:text-[var(--secondary)] duration-300 ${
@@ -107,7 +131,7 @@ export default function Header() {
                 }`}
                 onClick={() => setShow(false)}
               >
-                {link.text}
+                {t.nav[link.key]}
               </Link>
             </li>
           ))}
