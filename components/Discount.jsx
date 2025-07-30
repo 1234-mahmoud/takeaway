@@ -1,20 +1,26 @@
+"use client";
 import Button from "./Button";
 import { FaShoppingCart } from "react-icons/fa";
+import { useLanguage } from "@/contexts/LanguageContext";
+import translations from "@/data/translations";
 
-const cards = [
-  {
-    image: "o1.jpg",
-    title: "Tasty Thursdays",
-    discount: "20",
-  },
-  {
-    image: "o2.jpg",
-    title: "Pizza Days",
-    discount: "15",
-  },
-];
+const Discount = () => {
+  const { lang } = useLanguage();
+  const t = translations[lang];
 
-export default function Discount() {
+  const cards = [
+    {
+      image: "o1.jpg",
+      title: lang === "ar" ? "خميس لذيذ" : "Tasty Thursdays",
+      discount: "20",
+    },
+    {
+      image: "o2.jpg",
+      title: lang === "ar" ? "أيام البيتزا" : "Pizza Days",
+      discount: "15",
+    },
+  ];
+
   return (
     <section className="py-24 bg-white text-white ">
       <div className="max-w-[1200px] mx-auto">
@@ -35,10 +41,12 @@ export default function Discount() {
                 <div className="font-bold text-2xl">{card.title}</div>
                 <div className="text-5xl mt-2 mb-4">
                   {card.discount}%{" "}
-                  <span className="text-2xl inline-block">off</span>
+                  <span className="text-2xl inline-block">
+                    {lang === "ar" ? "خصم" : "off"}
+                  </span>
                 </div>
                 <Button className="flex items-center gap-3">
-                  Order Now <FaShoppingCart />
+                  {lang === "ar" ? "اطلب الآن" : "Order Now"} <FaShoppingCart />
                 </Button>
               </div>
             </div>
@@ -47,4 +55,6 @@ export default function Discount() {
       </div>
     </section>
   );
-}
+};
+
+export default Discount;

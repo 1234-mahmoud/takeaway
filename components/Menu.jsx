@@ -8,7 +8,6 @@ import { useCart } from "@/contexts/CartContext";
 import { useLanguage } from "@/contexts/LanguageContext";
 import translations from "@/data/translations";
 
-
 const categories = ["all", "burger", "pizza", "pasta", "fries"];
 
 // Reusable category filter
@@ -38,26 +37,35 @@ function CategoryFilter({ activeCategory, onChange }) {
 // Reusable card for each menu item
 function MenuCard({ item }) {
   const { addToCart } = useCart();
+  const { lang } = useLanguage();
 
   const handleAddToCart = () => {
     addToCart(item);
   };
+
+  // Use Arabic text if language is Arabic
+  const title = lang === "ar" ? item.titleAr : item.title;
+  const description = lang === "ar" ? item.descriptionAr : item.description;
 
   return (
     <div className="bg-[var(--surface-dark)] text-white rounded-2xl overflow-hidden group shadow-lg hover:shadow-xl transition-all duration-300">
       <div className="bg-[var(--neutral-200)] p-10 flex justify-center items-center h-[220px] rounded-bl-4xl">
         <img
           src={item.image}
-          alt={item.title}
+          alt={title}
           className="w-[150px] group-hover:scale-110 duration-300"
         />
       </div>
       <div className="p-6">
-        <p className="font-bold text-xl mb-2">{item.title}</p>
-        <p className="text-[var(--neutral-300)]">{item.description}</p>
+        <p className="font-bold text-xl mb-2">{title}</p>
+        <p className="text-[var(--neutral-300)]">{description}</p>
         <div className="flex items-center justify-between mt-3">
           <p>${item.price}</p>
-          <Button variant="secondary" className="py-3" onClick={handleAddToCart}>
+          <Button
+            variant="secondary"
+            className="py-3"
+            onClick={handleAddToCart}
+          >
             <FaCartPlus size={18} />
           </Button>
         </div>
@@ -96,7 +104,9 @@ export default function Menu() {
         </div>
 
         <div className="text-center mt-10">
-          <Button variant="primary" className="font-bold px-8 py-2">{t.menu.viewMore}</Button>
+          <Button variant="primary" className="font-bold px-8 py-2">
+            {t.menu.viewMore}
+          </Button>
         </div>
       </div>
     </section>

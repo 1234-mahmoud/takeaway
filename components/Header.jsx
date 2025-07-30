@@ -33,9 +33,12 @@ export default function Header() {
   return (
     <header className="absolute h-[60px] top-0 left-0 z-10 w-full bg-gradient-to-r from-[var(--primary-dark)] via-[var(--primary)] to-[var(--primary-light)] text-white shadow-lg">
       <div className="container flex justify-between items-center h-14">
-        <Link href="/" className={`text-5xl font-bold
+        <Link
+          href="/"
+          className={`text-5xl font-bold
           bg-[url('/meal2.jpg')] bg-clip-text text-transparent
-          `}>
+          `}
+        >
           {t.brand}
         </Link>
 
@@ -69,7 +72,10 @@ export default function Header() {
                 </span>
               )}
             </Link>
-            <button onClick={openSearch} className="hover:text-[var(--secondary)] transition-colors">
+            <button
+              onClick={openSearch}
+              className="hover:text-[var(--secondary)] transition-colors"
+            >
               <IoSearch size={20} />
             </button>
           </div>
@@ -77,9 +83,9 @@ export default function Header() {
           {/* Language Selector */}
           <select
             value={lang}
-            onChange={e => setLanguage(e.target.value)}
-            className="ml-4 px-2 py-1 rounded bg-[var(--primary-light)] text-black font-bold border border-[var(--secondary)] focus:outline-none"
-            style={{ direction: 'ltr' }}
+            onChange={(e) => setLanguage(e.target.value)}
+            className="px-2 py-1 rounded bg-[var(--primary-light)] text-black font-bold border border-[var(--secondary)] focus:outline-none"
+            style={{ direction: "ltr" }}
           >
             <option value="en">EN</option>
             <option value="ar">عربي</option>
@@ -96,20 +102,26 @@ export default function Header() {
               </span>
             )}
           </Link>
-          <button onClick={openSearch} className="hover:text-[var(--secondary)] transition-colors">
+          <button
+            onClick={openSearch}
+            className="hover:text-[var(--secondary)] transition-colors"
+          >
             <IoSearch size={20} />
           </button>
           {/* Language Selector Mobile */}
           <select
             value={lang}
-            onChange={e => setLanguage(e.target.value)}
+            onChange={(e) => setLanguage(e.target.value)}
             className="px-2 py-1 rounded bg-[var(--primary-light)] text-black font-bold border border-[var(--secondary)] focus:outline-none"
-            style={{ direction: 'ltr' }}
+            style={{ direction: "ltr" }}
           >
             <option value="en">EN</option>
             <option value="ar">عربي</option>
           </select>
-          <button className="hover:text-[var(--secondary)] z-20" onClick={toggle}>
+          <button
+            className="hover:text-[var(--secondary)] z-20"
+            onClick={toggle}
+          >
             <IoMenu size={30} />
           </button>
         </div>

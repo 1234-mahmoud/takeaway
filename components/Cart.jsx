@@ -10,6 +10,7 @@ import translations from "@/data/translations";
 // Cart item card component
 function CartItemCard({ item }) {
   const { updateQuantity, removeFromCart } = useCart();
+  const { lang } = useLanguage();
 
   const handleQuantityChange = (newQuantity) => {
     updateQuantity(item.id, newQuantity);
@@ -19,18 +20,22 @@ function CartItemCard({ item }) {
     removeFromCart(item.id);
   };
 
+  // Use Arabic text if language is Arabic
+  const title = lang === "ar" ? item.titleAr : item.title;
+  const description = lang === "ar" ? item.descriptionAr : item.description;
+
   return (
     <div className="bg-[var(--surface-dark)] text-white rounded-2xl overflow-hidden group shadow-lg hover:shadow-xl transition-all duration-300">
       <div className="bg-[var(--neutral-200)] p-6 flex justify-center items-center h-[180px] rounded-bl-4xl">
         <img
           src={item.image}
-          alt={item.title}
+          alt={title}
           className="w-[120px] group-hover:scale-110 duration-300"
         />
       </div>
       <div className="p-6">
-        <p className="font-bold text-xl mb-2">{item.title}</p>
-        <p className="text-[var(--neutral-300)] mb-3">{item.description}</p>
+        <p className="font-bold text-xl mb-2">{title}</p>
+        <p className="text-[var(--neutral-300)] mb-3">{description}</p>
         <div className="flex items-center justify-between mb-4">
           <p className="text-lg font-bold">${item.price}</p>
           <div className="flex items-center gap-2">
@@ -123,7 +128,11 @@ export default function Cart() {
             </span>
           </div>
           <div className="flex gap-4">
-            <Button variant="accent" className="flex-1 font-bold py-3" onClick={() => router.push('/checkout')}>
+            <Button
+              variant="accent"
+              className="flex-1 font-bold py-3"
+              onClick={() => router.push("/checkout")}
+            >
               {t.cart.proceed}
             </Button>
             <Button
@@ -138,4 +147,4 @@ export default function Cart() {
       </div>
     </section>
   );
-} 
+}

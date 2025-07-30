@@ -7,6 +7,7 @@ import { CartProvider } from "@/contexts/CartContext";
 import { SearchProvider } from "@/contexts/SearchContext";
 import SearchModal from "@/components/SearchModal";
 import { LanguageProvider } from "@/contexts/LanguageContext";
+import { LanguageWrapper } from "@/components/LanguageWrapper";
 
 const creepster = Creepster({
   weight: "400",
@@ -31,16 +32,16 @@ export default function RootLayout({ children }) {
     >
       <body className="min-h-screen flex flex-col">
         <LanguageProvider>
-          <CartProvider>
-            <SearchProvider>
-              <Header />
-              <main className="flex-1 pt-[60px]">
-                {children}
-              </main>
-              <Footer />
-              <SearchModal />
-            </SearchProvider>
-          </CartProvider>
+          <LanguageWrapper>
+            <CartProvider>
+              <SearchProvider>
+                <Header />
+                <main className="flex-1 pt-[60px]">{children}</main>
+                <Footer />
+                <SearchModal />
+              </SearchProvider>
+            </CartProvider>
+          </LanguageWrapper>
         </LanguageProvider>
       </body>
     </html>

@@ -4,15 +4,51 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination, Autoplay } from "swiper/modules";
 import Image from "next/image";
-import {Lobster } from 'next/font/google';
+import { Lobster } from "next/font/google";
+import { useLanguage } from "@/contexts/LanguageContext";
+import translations from "@/data/translations";
 
 const lobster = Lobster({
-  weight: '400',
-  subsets: ['latin'],
-  display: 'swap',
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
 });
 
 const Slider = () => {
+  const { lang } = useLanguage();
+  const t = translations[lang];
+
+  const slides = [
+    {
+      title: lang === "ar" ? "هذا طعام سريع" : "This Is Fast Food",
+      description:
+        lang === "ar"
+          ? "نقدم أفضل الوجبات السريعة الطازجة والمشوية على الفحم. طعامنا مصنوع من مكونات طازجة وعالية الجودة لضمان تجربة طعام استثنائية."
+          : "We serve the best fresh and charcoal-grilled fast food. Our food is made with fresh, high-quality ingredients to ensure an exceptional dining experience.",
+    },
+    {
+      title: lang === "ar" ? "طعام لذيذ" : "Delicious Food",
+      description:
+        lang === "ar"
+          ? "اكتشف قائمة متنوعة من الأطباق اللذيذة المصنوعة من أفضل المكونات. كل وجبة مصممة لتجلب لك تجربة طعام لا تُنسى."
+          : "Discover a diverse menu of delicious dishes made with the finest ingredients. Every meal is designed to bring you an unforgettable dining experience.",
+    },
+    {
+      title: lang === "ar" ? "خدمة سريعة" : "Fast Service",
+      description:
+        lang === "ar"
+          ? "نفخر بتقديم خدمة سريعة ومهنية. فريقنا متخصص في تقديم طعامك ساخناً وطازجاً في أسرع وقت ممكن."
+          : "We pride ourselves on fast and professional service. Our team is dedicated to serving your food hot and fresh as quickly as possible.",
+    },
+    {
+      title: lang === "ar" ? "جودة عالية" : "High Quality",
+      description:
+        lang === "ar"
+          ? "نستخدم فقط أفضل المكونات الطازجة لضمان أعلى جودة في كل وجبة. التزامنا هو تقديم طعام صحي ولذيذ لعملائنا."
+          : "We use only the finest fresh ingredients to ensure the highest quality in every meal. Our commitment is to serve healthy and delicious food to our customers.",
+    },
+  ];
+
   return (
     <div
       className={`w-full h-lvh bg-gradient-to-r from-[var(--primary-dark)] via-[var(--primary)] to-[var(--primary-light)] text-white relative shadow-2xl
@@ -40,22 +76,18 @@ const Slider = () => {
           speed={1000}
           className="mySwiper w-full h-[400px]"
         >
-          {Array.from({ length: 4 }).map((_, i) => (
+          {slides.map((slide, i) => (
             <SwiperSlide key={i}>
               <div className="flex flex-col justify-start items-start p-4">
-                <h1 className={`text-xl md:text-2xl lg:text-4xl font-bold mb-2 text-[var(--secondary)]
+                <h1
+                  className={`text-xl md:text-2xl lg:text-4xl font-bold mb-2 text-[var(--secondary)]
                   ${lobster.className}
-                  `}>
-                  This Is Fast Food
+                  `}
+                >
+                  {slide.title}
                 </h1>
                 <p className="text-md text-left w-full max-w-[400px] text-[var(--neutral-200)]">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam
-                  quia nesciunt magni explicabo deserunt molestias, sed sunt?
-                  Dolorum consequatur harum nesciunt sunt eius iste ab maxime
-                  vitae aspernatur eum. Perspiciatis laborum corporis id,
-                  pariatur tempora animi fugiat quisquam aliquam error voluptate
-                  suscipit quae at quam, non fuga dolorum cupiditate
-                  consequatur!
+                  {slide.description}
                 </p>
               </div>
             </SwiperSlide>

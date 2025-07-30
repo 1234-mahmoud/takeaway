@@ -1,45 +1,48 @@
 /* app/globals.css */
 @import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+/* Arabic Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap");
 @import "tailwindcss";
 
 :root {
   /* Professional Color Palette */
-  --primary: #1a365d;      /* Deep Navy Blue */
+  --primary: #1a365d; /* Deep Navy Blue */
   --primary-light: #2d5a8b; /* Lighter Navy */
-  --primary-dark: #0f2444;  /* Darker Navy */
-  --secondary: #d69e2e;     /* Rich Gold */
+  --primary-dark: #0f2444; /* Darker Navy */
+  --secondary: #d69e2e; /* Rich Gold */
   --secondary-light: #f6ad55; /* Light Gold */
-  --secondary-dark: #b7791f;  /* Dark Gold */
-  --accent: #38a169;        /* Professional Green */
-  --accent-light: #48bb78;   /* Light Green */
-  --accent-dark: #2f855a;    /* Dark Green */
-  
+  --secondary-dark: #b7791f; /* Dark Gold */
+  --accent: #38a169; /* Professional Green */
+  --accent-light: #48bb78; /* Light Green */
+  --accent-dark: #2f855a; /* Dark Green */
+
   /* Neutral Colors */
-  --neutral-50: #f7fafc;    /* Very Light Gray */
-  --neutral-100: #edf2f7;   /* Light Gray */
-  --neutral-200: #e2e8f0;   /* Medium Light Gray */
-  --neutral-300: #cbd5e0;   /* Medium Gray */
-  --neutral-400: #a0aec0;   /* Medium Dark Gray */
-  --neutral-500: #718096;   /* Gray */
-  --neutral-600: #4a5568;   /* Dark Gray */
-  --neutral-700: #2d3748;   /* Very Dark Gray */
-  --neutral-800: #1a202c;   /* Almost Black */
-  --neutral-900: #171923;   /* Black */
-  
+  --neutral-50: #f7fafc; /* Very Light Gray */
+  --neutral-100: #edf2f7; /* Light Gray */
+  --neutral-200: #e2e8f0; /* Medium Light Gray */
+  --neutral-300: #cbd5e0; /* Medium Gray */
+  --neutral-400: #a0aec0; /* Medium Dark Gray */
+  --neutral-500: #718096; /* Gray */
+  --neutral-600: #4a5568; /* Dark Gray */
+  --neutral-700: #2d3748; /* Very Dark Gray */
+  --neutral-800: #1a202c; /* Almost Black */
+  --neutral-900: #171923; /* Black */
+
   /* Semantic Colors */
-  --success: #38a169;       /* Green */
-  --warning: #d69e2e;       /* Gold */
-  --error: #e53e3e;         /* Red */
-  --info: #3182ce;          /* Blue */
-  
+  --success: #38a169; /* Green */
+  --warning: #d69e2e; /* Gold */
+  --error: #e53e3e; /* Red */
+  --info: #3182ce; /* Blue */
+
   /* Background Colors */
   --background: #ffffff;
   --foreground: #1a202c;
   --surface: #f7fafc;
   --surface-dark: #1a202c;
-  
+
   /* Text Colors */
   --text-primary: #1a202c;
   --text-secondary: #4a5568;
@@ -53,6 +56,56 @@ html {
 
 @utility container {
   @apply mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Arabic Font Support */
+.font-arabic {
+  font-family: "Noto Sans Arabic", "Amiri", sans-serif;
+}
+
+/* RTL Support */
+[dir="rtl"] {
+  text-align: right;
+}
+
+[dir="rtl"] .flex {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .justify-start {
+  justify-content: flex-end;
+}
+
+[dir="rtl"] .justify-end {
+  justify-content: flex-start;
+}
+
+[dir="rtl"] .text-left {
+  text-align: right;
+}
+
+[dir="rtl"] .text-right {
+  text-align: left;
+}
+
+[dir="rtl"] .ml-4 {
+  margin-left: 0;
+  margin-right: 1rem;
+}
+
+[dir="rtl"] .mr-4 {
+  margin-right: 0;
+  margin-left: 1rem;
+}
+
+[dir="rtl"] .pl-4 {
+  padding-left: 0;
+  padding-right: 1rem;
+}
+
+[dir="rtl"] .pr-4 {
+  padding-right: 0;
+  padding-left: 1rem;
 }
 
 @media (prefers-color-scheme: dark) {
