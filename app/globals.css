@@ -68,9 +68,9 @@ html {
   text-align: right;
 }
 
-[dir="rtl"] .flex {
+/* [dir="rtl"] .flex {
   flex-direction: row-reverse;
-}
+} */
 
 [dir="rtl"] .justify-start {
   justify-content: flex-end;

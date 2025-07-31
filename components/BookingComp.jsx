@@ -197,7 +197,10 @@ const BookingComp = () => {
 
               <div className="space-y-6">
                 {contactInfo.map((info, index) => (
-                  <div key={index} className="flex items-start gap-4">
+                  <div
+                    key={index}
+                    className={`flex gap-4 ${lang === "ar" ? "flex-row" : ""}`}
+                  >
                     <div className="w-12 h-12 bg-[var(--primary)] rounded-xl flex items-center justify-center text-white flex-shrink-0">
                       {info.icon}
                     </div>
