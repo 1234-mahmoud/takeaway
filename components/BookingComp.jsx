@@ -12,6 +12,39 @@ const lobster = Lobster({
   display: "swap",
 });
 
+const inputs = [
+  {
+    label: "Your Name",
+    type: "text",
+    name: "name",
+    placeholder: "Enter your full name",
+  },
+  {
+    label: "Phone Number",
+    type: "tel",
+    name: "phone",
+    placeholder: "Enter your phone number",
+  },
+  {
+    label: "Your Email",
+    type: "email",
+    name: "email",
+    placeholder: "Enter your email address",
+  },
+  {
+    label: "How Many Persons",
+    type: "number",
+    name: "persons",
+    placeholder: "Number of guests",
+  },
+  {
+    label: "Delivery Data and Time",
+    type: "datetime-local",
+    name: "address",
+    placeholder: "Enter your delivery address",
+  },
+];
+
 const BookingComp = () => {
   const mapRef = useRef(null);
   // Remove cart and orderPlaced state
@@ -50,75 +83,34 @@ const BookingComp = () => {
           className={`w-full lg:w-[600px] flex flex-col gap-[20px]`}
           // Remove onSubmit handler for order placement
         >
-          <p className={`${lobster.className} text-3xl uppercase text-[var(--primary)] mb-4`}>
+          <p
+            className={`${lobster.className} text-3xl uppercase text-[var(--primary)] mb-4`}
+          >
             book a meal
           </p>
 
           <div className={`flex flex-col  gap-[20px] `}>
-            <fieldset
-              className={`w-full h-[60px] border border-[var(--neutral-300)] rounded-lg p-[10px] hover:bg-[var(--neutral-50)] transition-all duration-300 ease-in-out focus-within:border-[var(--primary)] focus-within:shadow-md`}
-            >
-              <legend className="text-[var(--text-secondary)] px-2">Your Name</legend>
-              <input
-                type="text"
-                name=""
-                id=""
-                className={`w-full indent-4 focus:outline-0 bg-transparent text-[var(--text-primary)] placeholder-[var(--text-muted)]`}
-                placeholder="Enter your full name"
-              />
-            </fieldset>
-            <fieldset
-              className={`w-full h-[60px] border border-[var(--neutral-300)] rounded-lg p-[10px] hover:bg-[var(--neutral-50)] transition-all duration-300 ease-in-out focus-within:border-[var(--primary)] focus-within:shadow-md`}
-            >
-              <legend className="text-[var(--text-secondary)] px-2">Phone Number</legend>
-              <input
-                type="tel"
-                name=""
-                id=""
-                className={`w-full indent-4 focus:outline-0 bg-transparent text-[var(--text-primary)] placeholder-[var(--text-muted)]`}
-                placeholder="Enter your phone number"
-              />
-            </fieldset>
-            <fieldset
-              className={`w-full h-[60px] border border-[var(--neutral-300)] rounded-lg p-[10px] hover:bg-[var(--neutral-50)] transition-all duration-300 ease-in-out focus-within:border-[var(--primary)] focus-within:shadow-md`}
-            >
-              <legend className="text-[var(--text-secondary)] px-2">Your Email</legend>
-              <input
-                type="email"
-                name=""
-                id=""
-                className={`w-full indent-4 focus:outline-0 bg-transparent text-[var(--text-primary)] placeholder-[var(--text-muted)]`}
-                placeholder="Enter your email address"
-              />
-            </fieldset>
-            <fieldset
-              className={`w-full h-[60px] border border-[var(--neutral-300)] rounded-lg p-[10px] hover:bg-[var(--neutral-50)] transition-all duration-300 ease-in-out focus-within:border-[var(--primary)] focus-within:shadow-md`}
-            >
-              <legend className="text-[var(--text-secondary)] px-2">How Many Persons</legend>
-              <input
-                type="number"
-                name=""
-                id=""
-                className={`w-full indent-4 focus:outline-0 bg-transparent text-[var(--text-primary)] placeholder-[var(--text-muted)]`}
-                placeholder="Number of guests"
-                min="1"
-                max="20"
-              />
-            </fieldset>
-            <fieldset
-              className={`w-full h-[60px] border border-[var(--neutral-300)] rounded-lg p-[10px] hover:bg-[var(--neutral-50)] transition-all duration-300 ease-in-out focus-within:border-[var(--primary)] focus-within:shadow-md`}
-            >
-              <legend className="text-[var(--text-secondary)] px-2">Delivery Date and Time</legend>
-              <input
-                type="datetime-local"
-                name=""
-                id=""
-                className={`w-full indent-4 focus:outline-0 bg-transparent text-[var(--text-primary)] placeholder-[var(--text-muted)]`}
-                placeholder="Select date and time"
-              />
-            </fieldset>
+            {inputs.map((input) => (
+              <fieldset
+                className={`w-full border border-[var(--neutral-300)] rounded-lg focus-within:border-[var(--primary)] focus-within:shadow-md`}
+              >
+                <legend className="text-[var(--text-secondary)] px-2">
+                  {input.label}
+                </legend>
+                <input
+                  type={input.type}
+                  name={input.name}
+                  id=""
+                  className={`w-full p-4 pt-0.5 outline-0 bg-transparent text-[var(--text-primary)] placeholder-[var(--text-muted)]`}
+                  placeholder="Enter your full name"
+                />
+              </fieldset>
+            ))}
           </div>
-          <Button variant="primary" className="w-[150px] h-[40px] text-[16px] font-bold">
+          <Button
+            variant="primary"
+            className="w-[150px] h-[40px] text-[16px] font-bold"
+          >
             Book Now
           </Button>
         </form>
