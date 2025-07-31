@@ -101,6 +101,7 @@ const Slider = () => {
           display: flex;
           justify-content: flex-start !important;
           padding-left: 1rem;
+           direction: ltr !important;
         }
       `}</style>
     </div>
