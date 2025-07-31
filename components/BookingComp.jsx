@@ -92,6 +92,7 @@ const BookingComp = () => {
           <div className={`flex flex-col  gap-[20px] `}>
             {inputs.map((input) => (
               <fieldset
+                key={input.placeholder}
                 className={`w-full border border-[var(--neutral-300)] rounded-lg focus-within:border-[var(--primary)] focus-within:shadow-md`}
               >
                 <legend className="text-[var(--text-secondary)] px-2">

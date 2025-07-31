@@ -15,11 +15,18 @@ function CategoryFilter({ activeCategory, onChange }) {
   const { lang } = useLanguage();
   const t = translations[lang];
   return (
-    <div className="flex flex-wrap justify-center gap-4 mb-12">
+    <nav
+      className="flex flex-wrap justify-center gap-4 mb-12"
+      role="tablist"
+      aria-label="Menu categories"
+    >
       {categories.map((category) => (
         <button
           key={category}
           onClick={() => onChange(category)}
+          role="tab"
+          aria-selected={activeCategory === category}
+          aria-controls={`menu-${category}`}
           className={`px-5 py-2 rounded-full capitalize font-bold transition-all duration-300 shadow-md
             ${
               activeCategory === category
@@ -30,7 +37,7 @@ function CategoryFilter({ activeCategory, onChange }) {
           {t.menu.categories[category]}
         </button>
       ))}
-    </div>
+    </nav>
   );
 }
 
@@ -48,29 +55,33 @@ function MenuCard({ item }) {
   const description = lang === "ar" ? item.descriptionAr : item.description;
 
   return (
-    <div className="bg-[var(--surface-dark)] text-white rounded-2xl overflow-hidden group shadow-lg hover:shadow-xl transition-all duration-300">
+    <article className="bg-[var(--surface-dark)] text-white rounded-2xl overflow-hidden group shadow-lg hover:shadow-xl transition-all duration-300">
       <div className="bg-[var(--neutral-200)] p-10 flex justify-center items-center h-[220px] rounded-bl-4xl">
         <img
           src={item.image}
-          alt={title}
+          alt={`${title} - ${description}`}
           className="w-[150px] group-hover:scale-110 duration-300"
+          loading="lazy"
+          width="150"
+          height="150"
         />
       </div>
       <div className="p-6">
-        <p className="font-bold text-xl mb-2">{title}</p>
+        <h3 className="font-bold text-xl mb-2">{title}</h3>
         <p className="text-[var(--neutral-300)]">{description}</p>
         <div className="flex items-center justify-between mt-3">
-          <p>${item.price}</p>
+          <p className="text-lg font-semibold">${item.price}</p>
           <Button
             variant="secondary"
             className="py-3"
             onClick={handleAddToCart}
+            aria-label={`Add ${title} to cart`}
           >
             <FaCartPlus size={18} />
           </Button>
         </div>
       </div>
-    </div>
+    </article>
   );
 }
 
@@ -86,9 +97,16 @@ export default function Menu() {
       : menu.filter((item) => item.category === activeCategory);
 
   return (
-    <section id="menu" className="py-24 px-4 bg-white text-black">
+    <section
+      id="menu"
+      className="py-24 px-4 bg-white text-black"
+      aria-labelledby="menu-title"
+    >
       <div className="container mx-auto max-w-5xl">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
+        <h2
+          id="menu-title"
+          className="text-3xl md:text-4xl font-bold mb-12 text-center"
+        >
           {t.menu.title}
         </h2>
 
@@ -97,9 +115,14 @@ export default function Menu() {
           onChange={setActiveCategory}
         />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          role="tabpanel"
+          id={`menu-${activeCategory}`}
+          aria-labelledby={`tab-${activeCategory}`}
+        >
           {filteredItems.map((item, index) => (
-            <MenuCard key={index} item={item} />
+            <MenuCard key={`${item.id}-${index}`} item={item} />
           ))}
         </div>
 

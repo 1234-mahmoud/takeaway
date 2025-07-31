@@ -5,6 +5,40 @@ import Button from "@/components/Button";
 import { useLanguage } from "@/contexts/LanguageContext";
 import translations from "@/data/translations";
 
+const metadata = {
+  title: "Checkout",
+  description:
+    "Complete your order with Takeaway's secure checkout process. Enter delivery details and payment information for fast food delivery.",
+  keywords: [
+    "checkout",
+    "payment",
+    "delivery",
+    "order completion",
+    "secure checkout",
+  ],
+  openGraph: {
+    title: "Checkout - Takeaway",
+    description:
+      "Complete your order with Takeaway's secure checkout process. Enter delivery details and payment information.",
+    url: "https://takeaway.com/checkout",
+    images: [
+      {
+        url: "/f3.png",
+        width: 1200,
+        height: 630,
+        alt: "Takeaway Checkout",
+      },
+    ],
+  },
+  alternates: {
+    canonical: "/checkout",
+  },
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
+
 export default function CheckoutPage() {
   const { items, getTotalPrice, clearCart } = useCart();
   const [orderPlaced, setOrderPlaced] = useState(false);
